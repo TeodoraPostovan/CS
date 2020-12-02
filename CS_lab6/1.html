@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta name="google-signin-client_id" content="205528256103-kpbn0la1ng6fj09aftkd8hr90modickr.apps.googleusercontent.com">
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js">
+    </script>
+    <script src="https://apis.google.com/js/client:platform.js?onload=start" async defer>
+    </script>
+  
+</head>
+<body>
+    <h1>Please login</h1>
+    <img src="1.png" width="200" height="200">
+  <div class="g-signin2" data-onsuccess="onSignIn"></div>
+  <script>
+    function onSignIn(googleUser) {
+        var profile = googleUser.getBasicProfile();
+        console.log(profile)
+    }
+  </script>
+  <button onclick="signOut()">Sign out</button>
+  <script>
+      function signOut() {
+        gapi.auth2.getAuthInstance().signOut().then(function() {
+        console.log('user signed out')
+    })
+    }
+  </script>
+
+  <h1></h1>
+  <script>
+
+    function statusChangeCallback(response) {  
+      console.log('statusChangeCallback');
+      console.log(response);                   
+      if (response.status === 'connected') {   
+        testAPI();  
+      } else {                     
+      }
+    }
+  
+  
+    function checkLoginState() {               
+      FB.getLoginStatus(function(response) {   
+        statusChangeCallback(response);
+      });
+    }
+  
+  
+    window.fbAsyncInit = function() {
+      FB.init({
+        appId      : '679143409693292',
+        cookie     : true,                     
+        xfbml      : true,                     
+        version    : 'v8.0'           
+      });
+  
+  
+      FB.getLoginStatus(function(response) {   
+        statusChangeCallback(response);        
+      });
+    };
+   
+    function testAPI() {                      
+      FB.api('/me', function(response) {
+        console.log('Successful login for: ' + response.name);
+      });
+    }
+  
+  </script>
+
+  <fb:login-button scope="public_profile" onlogin="checkLoginState();">
+    </fb:login-button>
+
+<script async defer crossorigin="anonymous" src="https://connect.facebook.net/en_US/sdk.js"></script>
+
+<br>
+
+<script type="text/javascript" src="https://vk.com/js/api/openapi.js"></script>
+<script type="text/javascript">
+  VK.init({apiId: 7684151, onlyWidgets: true});
+</script>
+
+
+<script type="text/javascript">
+  VK.init({apiId: 7684151, onlyWidgets: true});
+</script>
+<div id="vk_auth"></div>
+<script type="text/javascript">
+  VK.Widgets.Auth("vk_auth");
+</script>
+    
+  </body>
+</html>
